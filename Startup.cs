@@ -27,9 +27,7 @@ namespace aspnetapp
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddCors(o => o.AddPolicy("DefaultP", builder =>
-                builder.AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
+                builder.WithOrigins("*")
             ));
         }
 
