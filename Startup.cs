@@ -26,6 +26,11 @@ namespace aspnetapp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddCors(o => o.AddPolicy("DefaultP", builder =>
+                builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+            ));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,6 +46,7 @@ namespace aspnetapp
             }
 
             // app.UseHttpsRedirection();
+            app.UseCors("DefaultP");
             app.UseMvc();
         }
     }
